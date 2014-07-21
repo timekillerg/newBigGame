@@ -1,0 +1,11 @@
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\Assembly-CSharp.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\Assembly-CSharp.pdb
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\UnityEditor.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\UnityEngine.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\Mono.Cecil.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\nunit.framework.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\Unity.DataContract.dll
+H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.dll
+H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.pdb

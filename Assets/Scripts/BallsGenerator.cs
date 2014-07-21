@@ -8,7 +8,7 @@ public class BallsGenerator : MonoBehaviour
     public float minXPosition;
     public float maxXPosition;
     public int ballsCount;
-    private readonly float PERIOD_BETWEEN_BALLS = 1f;
+    private readonly float PERIOD_BETWEEN_BALLS = 0.25f;
     private float _instantiateTime;
 
     void Start()
@@ -23,7 +23,7 @@ public class BallsGenerator : MonoBehaviour
 
     private void InstatiateAnyBall()
     {
-        if (_instantiateTime + 0.25 < Time.time && GameObject.FindGameObjectsWithTag("Ball").Length < ballsCount)
+        if (_instantiateTime + PERIOD_BETWEEN_BALLS < Time.time && GameObject.FindGameObjectsWithTag("Ball").Length < ballsCount)
         {
             int ballId = Random.Range(0, balls.Length);
             float xPosition = Random.Range(minXPosition, maxXPosition);
