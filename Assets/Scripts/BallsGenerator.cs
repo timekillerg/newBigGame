@@ -18,19 +18,19 @@ public class BallsGenerator : MonoBehaviour
 
     void Update()
     {
-        if (_instantiateTime + 0.25 < Time.time && GameObject.FindGameObjectsWithTag("Ball").Length < ballsCount)
-        {
-            InstatiateAnyBall();
-            _instantiateTime = Time.time;
-        }
+        InstatiateAnyBall();
     }
 
     private void InstatiateAnyBall()
     {
-        int ballId = Random.Range(0, balls.Length);
-        float xPosition = Random.Range(minXPosition, maxXPosition);
-        Vector3 newBallPosition = ballPosition;
-        newBallPosition.x = xPosition;
-        Instantiate(balls[ballId], newBallPosition, Quaternion.identity);
+        if (_instantiateTime + 0.25 < Time.time && GameObject.FindGameObjectsWithTag("Ball").Length < ballsCount)
+        {
+            int ballId = Random.Range(0, balls.Length);
+            float xPosition = Random.Range(minXPosition, maxXPosition);
+            Vector3 newBallPosition = ballPosition;
+            newBallPosition.x = xPosition;
+            Instantiate(balls[ballId], newBallPosition, Quaternion.identity);
+            _instantiateTime = Time.time;
+        }
     }
 }
