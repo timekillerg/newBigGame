@@ -8,46 +8,44 @@ public class ConnGenerator : MonoBehaviour
 {
     public GameObject connection;
     public float maxConnectionDistance;
-    private GameObject[] balls;
-    private GameObject[] connections;
 
     void Start()
     {
-
+        StaticGameObjects.Connections = new List<Connection>();
+        StaticGameObjects.MaxConnectionDistance = maxConnectionDistance;
     }
 
     void Update()
     {
-        balls = GameObject.FindGameObjectsWithTag("Ball");
-        connections = GameObject.FindGameObjectsWithTag("Connection");
-            foreach (GameObject ball1 in balls)
-                foreach (GameObject ball2 in balls)
+        foreach (GameObject ball1 in StaticGameObjects.Balls)
+        {
+            foreach (GameObject ball2 in StaticGameObjects.Balls)
+            {
+                var distance = Vector3.Distance(ball1.transform.position, ball2.transform.position);
+
+                if (distance < StaticGameObjects.MaxConnectionDistance && distance > 0)
                 {
-                    var distance = Vector3.Distance(ball1.transform.position, ball2.transform.position);
-
-                    if (distance < maxConnectionDistance && distance > 0)
+                    bool isExistConnection = false;
+                    foreach (Connection connection in StaticGameObjects.Connections)
                     {
-                        bool noSuchConnection = true;
-                        foreach (GameObject connection in connections)
+                        if ((connection.BallName1 == ball1.name && connection.BallName2 == ball2.name)
+                            || (connection.BallName2 == ball1.name && connection.BallName1 == ball2.name))
                         {
-                            var connectionController = connection.GetComponent<ConnectionController>();
-                            if ((connectionController.ball1 == ball1 && connectionController.ball2 == ball2)
-                                || (connectionController.ball2 == ball1 && connectionController.ball1 == ball2))
-                            {
-                                noSuchConnection = false;
-                                break;
-                            }
-                        }
-
-                        if (noSuchConnection)
-                        {
-                            var newConnection = (GameObject)Instantiate(connection, Vector3.zero, Quaternion.identity);
-                            var connectionController = newConnection.GetComponent<ConnectionController>();
-                            connectionController.ball1 = ball1;
-                            connectionController.ball2 = ball2;
-                            return;
+                            isExistConnection = true;
+                            break;
                         }
                     }
+
+                    if (!isExistConnection)
+                    {
+                        var newConnection = (GameObject)Instantiate(connection, Vector3.zero, Quaternion.identity);
+                        var connectionController = newConnection.GetComponent<ConnectionController>();
+                        connectionController.ball1 = ball1;
+                        connectionController.ball2 = ball2;
+                        StaticGameObjects.Connections.Add(new Connection() { BallName1 = ball1.name, BallName2 = ball2.name });
+                    }
                 }
+            }
+        }
     }
 }

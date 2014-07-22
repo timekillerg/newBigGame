@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BallsGenerator : MonoBehaviour
 {
     public GameObject[] balls;
     public Vector3 ballPosition;
-    public float minXPosition;
     public float maxXPosition;
-    public int ballsCount;
-    private readonly float PERIOD_BETWEEN_BALLS = 0.25f;
+    public int maxBallsCount;
+    private readonly float PERIOD_BETWEEN_BALLS = 0.1f;
     private float _instantiateTime;
 
     void Start()
     {
         _instantiateTime = Time.time;
+        StaticGameObjects.Balls = new List<GameObject>();
+        StaticGameObjects.LastCreatedBallId = 0;
     }
 
     void Update()
@@ -23,13 +25,17 @@ public class BallsGenerator : MonoBehaviour
 
     private void InstatiateAnyBall()
     {
-        if (_instantiateTime + PERIOD_BETWEEN_BALLS < Time.time && GameObject.FindGameObjectsWithTag("Ball").Length < ballsCount)
+        if (_instantiateTime + PERIOD_BETWEEN_BALLS < Time.time
+            && StaticGameObjects.Balls.Count < maxBallsCount)
         {
-            int ballId = Random.Range(0, balls.Length);
-            float xPosition = Random.Range(minXPosition, maxXPosition);
+            int randomBallId = Random.Range(0, balls.Length);
+            float randomXPosition = Random.Range(-maxXPosition, maxXPosition);
             Vector3 newBallPosition = ballPosition;
-            newBallPosition.x = xPosition;
-            Instantiate(balls[ballId], newBallPosition, Quaternion.identity);
+            newBallPosition.x = randomXPosition;
+            var ball = Instantiate(balls[randomBallId], newBallPosition, Quaternion.identity);
+            ball.name = ball.name + StaticGameObjects.LastCreatedBallId.ToString();
+            StaticGameObjects.Balls.Add((GameObject)ball);
+            StaticGameObjects.LastCreatedBallId++;
             _instantiateTime = Time.time;
         }
     }

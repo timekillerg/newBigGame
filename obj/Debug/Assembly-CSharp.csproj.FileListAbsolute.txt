@@ -9,3 +9,14 @@ H:\_KEVI_GAMES\newBigGame\Temp\bin\Debug\ICSharpCode.NRefactory.dll
 H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.dll
 H:\_KEVI_GAMES\newBigGame\obj\Debug\Assembly-CSharp.pdb
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\Assembly-CSharp.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\UnityEditor.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\UnityEngine.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\Mono.Cecil.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\nunit.framework.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\Unity.DataContract.dll
+D:\_TIMEKILLERGAMES\newBigGame\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\_TIMEKILLERGAMES\newBigGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\_TIMEKILLERGAMES\newBigGame\obj\Debug\Assembly-CSharp.dll
+D:\_TIMEKILLERGAMES\newBigGame\obj\Debug\Assembly-CSharp.pdb

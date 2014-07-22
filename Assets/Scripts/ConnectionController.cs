@@ -7,7 +7,6 @@ public class ConnectionController : MonoBehaviour {
     public GameObject ball2;
     private Vector3 v1;
     private Vector3 v2;
-    private float maxConnectionDistance = 1.5f;
 
 	void Start () {
         v1 = ball1.transform.position;
@@ -21,8 +20,14 @@ public class ConnectionController : MonoBehaviour {
             v2 = ball2.transform.position;
             gameObject.GetComponent<LineRenderer>().SetPosition(0, v1);
             gameObject.GetComponent<LineRenderer>().SetPosition(1, v2);
-            if (Vector3.Distance(ball1.transform.position, ball2.transform.position) > maxConnectionDistance)
+            if (Vector3.Distance(ball1.transform.position, ball2.transform.position) > StaticGameObjects.MaxConnectionDistance)
+            {
+                var conns = StaticGameObjects.Connections.Find(
+                    c => (c.BallName1 == ball1.name && c.BallName2 == ball2.name) || (c.BallName2 == ball1.name && c.BallName1 == ball2.name)
+                    );
+                StaticGameObjects.Connections.Remove(conns);
                 Destroy(gameObject);
+            }
         }	    
 	}
 }
